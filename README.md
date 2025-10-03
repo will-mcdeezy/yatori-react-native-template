@@ -1,50 +1,81 @@
-# Welcome to your Expo app 👋
+# Yatori Solana dApp Template 🚀
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A powerful React Native template for building Solana dApps with Yatori integration. This template provides everything you need to get started with Solana blockchain development, including wallet connections, token transfers, and Yatori API integration.
 
-## Get started
+## Features
+
+- 🔗 **Wallet Integration**: Connect to Solflare and Backpack wallets
+- 💰 **Token Support**: Built-in support for USDC, USDT, and BONK tokens
+- 🌐 **Yatori API**: Seamless integration with Yatori's data services
+- 📱 **Cross-Platform**: Works on iOS, Android, and Web
+- 🎨 **Modern UI**: Beautiful, responsive design with dark/light mode support
+- ⚡ **Fast Development**: Built with Expo Router for rapid development
+
+## Quick Start
 
 1. Install dependencies
 
    ```bash
-   npm install
+   bun install
    ```
 
-2. Start the app
+2. Start the development server
 
    ```bash
-   npx expo start
+   bun dev
    ```
 
-In the output, you'll find options to open the app in a
+3. Open your app in:
+   - **iOS Simulator**: Press `i` in the terminal
+   - **Android Emulator**: Press `a` in the terminal  
+   - **Web Browser**: Press `w` in the terminal
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Solana Integration
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+This template includes pre-configured components for:
 
-## Get a fresh project
+- **Wallet Connection**: Connect users with Solflare or Backpack
+- **Token Operations**: Send/receive USDC, USDT, and BONK tokens
+- **Transaction Handling**: Built-in transaction management and error handling
+- **Yatori API**: Access to Yatori's comprehensive Solana data services
 
-When you're ready, run:
+## Project Structure
 
-```bash
-npm run reset-project
+```
+app/
+├── (tabs)/
+│   ├── index.tsx          # Home screen with wallet connection
+│   └── explore.tsx        # Token operations and features
+├── _layout.tsx            # Root layout
+└── modal.tsx              # Transaction details modal
+
+components/
+├── wallet/                # Wallet connection components
+├── tokens/                # Token operation components
+└── ui/                   # Reusable UI components
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Development
 
-## Learn more
+### Adding New Tokens
 
-To learn more about developing your project with Expo, look at the following resources:
+To add support for additional tokens, update the token configuration in `constants/tokens.ts`.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Customizing Wallet Providers
 
-## Join the community
+Modify wallet connection logic in `components/wallet/` to add support for additional wallet providers.
 
-Join our community of developers creating universal apps.
+### Yatori API Integration
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Configure your Yatori API endpoints in `services/yatori.ts` and update the API calls as needed.
+
+## Learn More
+
+- [Solana Documentation](https://docs.solana.com/): Learn about Solana blockchain development
+- [Yatori API Docs](https://docs.yatori.com/): Explore Yatori's data services
+- [Expo Router](https://docs.expo.dev/router/introduction/): File-based routing for React Native
+
+## Support
+
+- [Yatori Discord](https://discord.gg/yatori): Join our developer community
+- [GitHub Issues](https://github.com/yatori/templates/issues): Report bugs and request features

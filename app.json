@@ -1,11 +1,15 @@
 {
   "expo": {
-    "name": "yatori-react-native-template",
-    "slug": "yatori-react-native-template",
+    "name": "Yatori Solana dApp",
+    "slug": "yatori-solana-dapp-template",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "yatorireactnativetemplate",
+    "scheme": "yatori-solana-dapp",
+    "description": "A powerful React Native template for building Solana dApps with Yatori integration",
+    "associatedDomains": [
+      "applinks:backpack.app"
+    ],
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -26,19 +30,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
-          "dark": {
-            "backgroundColor": "#000000"
-          }
-        }
-      ]
+      "expo-router"
     ],
     "experiments": {
       "typedRoutes": true,
