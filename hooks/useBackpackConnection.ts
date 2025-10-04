@@ -22,8 +22,8 @@ export const useBackpackConnection = async () => {
         const params = new URLSearchParams({
             dapp_encryption_public_key: pubkey,
             cluster: 'mainnet-beta',
-            app_url: 'exp://192.168.1.186:8081',
-            redirect_link: 'exp://192.168.1.186:8081/--/onConnectBackpack',
+            app_url: 'exp://localhost:8081',
+            redirect_link: 'exp://localhost:8081/--/onConnectBackpack',
         });
 
         const backpackUrl = `https://backpack.app/ul/v1/connect?${String(params)}`;

@@ -347,7 +347,7 @@ export default function HomeScreen() {
       console.log("Encrypted payload:", encryptedResult);
 
       // Get the redirect link from connection params (should be exp://...)
-      const redirectLink = "exp://192.168.1.100:8081"; // Fallback to default expo URL
+      const redirectLink = "exp://localhost:8081"; // Fallback to default expo URL
       console.log("Using redirect link:", redirectLink);
 
       // Create URL parameters for backpack wallet
