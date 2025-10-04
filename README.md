@@ -4,11 +4,11 @@ A powerful React Native template for building Solana dApps with Yatori integrati
 
 ## Features
 
-- 🔗 **Wallet Integration**: Connect to Solflare and Backpack wallets
-- 💰 **Token Support**: Built-in support for USDC, USDT, and BONK tokens
-- 🌐 **Yatori API**: Seamless integration with Yatori's data services
-- 📱 **Cross-Platform**: Works on iOS, Android, and Web
-- 🎨 **Modern UI**: Beautiful, responsive design with dark/light mode support
+- 🔗 **Wallet Integration**: Connect to Backpack mobile wallet with encryption
+- 💰 **Token Support**: Built-in support for USDC, PYUSD, USDT transfers (BONK, CROWN, SOL coming soon)
+- 🌐 **Yatori API**: Seamless integration with Yatori's Arrow API for transaction data
+- 📋 **Token Reference**: Complete mint address reference with copy functionality
+- 📱 **Cross-Platform**: Works on iOS, Android
 - ⚡ **Fast Development**: Built with Expo Router for rapid development
 
 ## Quick Start
@@ -16,13 +16,13 @@ A powerful React Native template for building Solana dApps with Yatori integrati
 1. Install dependencies
 
    ```bash
-   bun install
+   npm install
    ```
 
 2. Start the development server
 
    ```bash
-   bun dev
+   npm start
    ```
 
 3. Open your app in:
@@ -34,40 +34,40 @@ A powerful React Native template for building Solana dApps with Yatori integrati
 
 This template includes pre-configured components for:
 
-- **Wallet Connection**: Connect users with Solflare or Backpack
-- **Token Operations**: Send/receive USDC, USDT, and BONK tokens
-- **Transaction Handling**: Built-in transaction management and error handling
-- **Yatori API**: Access to Yatori's comprehensive Solana data services
+- **Wallet Connection**: Connect users with Backpack wallet using encryption
+- **Token Operations**: Send USDC, PYUSD, and USDT tokens (1 cent transfers)
+- **Transaction Handling**: Built-in transaction management with Backpack signing
+- **Yatori API**: Access to Yatori's Arrow API for raw transaction data
+- **Token Reference**: Complete mint address library with copy functionality
 
 ## Project Structure
 
 ```
 app/
 ├── (tabs)/
-│   ├── index.tsx          # Home screen with wallet connection
-│   └── explore.tsx        # Token operations and features
+│   ├── index.tsx          # Home screen with wallet connection and token transfers
+│   └── explore.tsx        # Token mint addresses reference
 ├── _layout.tsx            # Root layout
+├── onConnectBackpack.tsx  # Backpack wallet connection screen
 └── modal.tsx              # Transaction details modal
 
-components/
-├── wallet/                # Wallet connection components
-├── tokens/                # Token operation components
-└── ui/                   # Reusable UI components
+hooks/
+└── useBackpackConnection.ts # Backpack wallet connection hook
 ```
 
 ## Development
 
 ### Adding New Tokens
 
-To add support for additional tokens, update the token configuration in `constants/tokens.ts`.
+To add support for additional tokens, update the token configuration in `app/(tabs)/index.tsx` and `app/(tabs)/explore.tsx`.
 
 ### Customizing Wallet Providers
 
-Modify wallet connection logic in `components/wallet/` to add support for additional wallet providers.
+Modify wallet connection logic in `hooks/useBackpackConnection.ts` and `app/onConnectBackpack.tsx` to add support for additional wallet providers.
 
 ### Yatori API Integration
 
-Configure your Yatori API endpoints in `services/yatori.ts` and update the API calls as needed.
+The Arrow API integration is configured in `app/(tabs)/index.tsx` for token transfer functionality.
 
 ## Learn More
 
@@ -77,5 +77,6 @@ Configure your Yatori API endpoints in `services/yatori.ts` and update the API c
 
 ## Support
 
-- [Yatori Discord](https://discord.gg/yatori): Join our developer community
+- [Yatori Website](https://yatori.io): Visit our official website
+- [Twitter](https://twitter.com/Yatori_io): Follow us on Twitter
 - [GitHub Issues](https://github.com/yatori/templates/issues): Report bugs and request features
