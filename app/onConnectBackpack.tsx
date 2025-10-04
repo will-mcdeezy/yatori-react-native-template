@@ -3,6 +3,7 @@ import { ThemedView } from "@/components/themed-view";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import bs58 from "bs58";
 import { Buffer } from "buffer";
+import { getRandomBytes } from "expo-crypto";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Modal, StyleSheet, TouchableOpacity } from "react-native";
@@ -42,8 +43,37 @@ const decryptPayload = (
 };
 
 // Derive shared secret function
-const derivedShared = (publicKey: string, secretKey: string) => {
-  return nacl.box.before(bs58.decode(publicKey), bs58.decode(secretKey));
+export const derivedShared = (walletPubKey: string, scala: string) => {
+  const localSecret = bs58.decode(scala);
+
+  const sharedSecretDapp = nacl.box.before(
+    bs58.decode(walletPubKey),
+    localSecret
+  );
+
+  return sharedSecretDapp;
+};
+
+// Encrypt payload function
+export const encryptPayload = async (
+  payload: any,
+  sharedSecret?: Uint8Array
+) => {
+  if (!sharedSecret) {
+    return;
+  }
+  const nonce = new Uint8Array(await getRandomBytes(32));
+  Alert.alert("Nonce:", nonce.toString());
+  const encryptedPayload = nacl.box.after(
+    //@ts-ignore
+    Buffer.from(JSON.stringify(payload)),
+    nonce,
+    sharedSecret
+  );
+  return {
+    nonce: nonce,
+    encryptedPayload: encryptedPayload,
+  };
 };
 
 export default function OnConnectBackpack() {
@@ -95,6 +125,8 @@ export default function OnConnectBackpack() {
             // Decrypt the connection data
             const connectData = decryptPayload(data, nonce, sharedSecretDapp);
             console.log("Decrypted connection data:", connectData);
+            console.log("Session from decrypted data:", connectData.session);
+            console.log("Session type:", typeof connectData.session);
 
             // Create connection data object
             const walletData: WalletConnectionData = {
@@ -112,7 +144,18 @@ export default function OnConnectBackpack() {
               JSON.stringify(walletData)
             )
               .then(() => {
+                // Also save the wallet encryption public key separately for easy access
+                return AsyncStorage.setItem(
+                  "wallet_encryption_public_key",
+                  backpackPubKey
+                );
+              })
+              .then(() => {
                 console.log("Wallet connection data saved:", walletData);
+                console.log(
+                  "Wallet encryption public key saved:",
+                  backpackPubKey
+                );
                 setConnectionData(walletData);
                 setShowModal(true);
               })
